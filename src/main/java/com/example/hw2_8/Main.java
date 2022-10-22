@@ -30,18 +30,11 @@ public class Main {
             countP++;
         }
         System.out.println();
-
         Recipe salad = new Recipe("фруктовый салат", Set.of(banana, orange, apple));
-        System.out.println(salad);
         Recipe coffeeMilk = new Recipe("кофе с молоком", Set.of(coffee, milk));
-        System.out.println(coffeeMilk);
         Recipe coffeeMilk2 = new Recipe("кофе и молоко", Set.of(coffee, milk));
-        System.out.println(coffeeMilk2);
         Recipe teaMilk = new Recipe("чай с молоком", Set.of(tea, milk));
-        System.out.println(teaMilk);
         Recipe teaMilk2 = new Recipe("чай с молоком", Set.of(tea, milk, cream));
-        System.out.println(teaMilk2);
-        System.out.println();
 
         Set<Recipe> setRecipe = new HashSet<>();
         setRecipe.add(salad);
@@ -69,6 +62,7 @@ public class Main {
             }
         }
         System.out.println(nums);
+        System.out.println();
 
         List<String> zadachi = new ArrayList<>();
             for (int a = 1, b = 1; b < 10; a= a - b, b++) {
