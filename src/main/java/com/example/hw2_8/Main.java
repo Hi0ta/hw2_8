@@ -3,52 +3,51 @@ import java.time.LocalDate;
 import java.util.*;
 public class Main {
     public static Map<String, Passport> updatePassport = new HashMap<>();
-
     public static void main(String[] args) {
-        Product milk = new Product("молоко", 65, 1);
-        Product tea = new Product("чай", 450, 0.5);
-        Product coffee = new Product("кофе", 650, 0.2);
-        Product banana = new Product("банан", 39, 1);
-        Product apple = new Product("яблоко", 35, 1);
-        Product orange = new Product("апельсин", 85, 1);
-        Product orange2 = new Product("апельсин", 85, 1);
-        Product cream = new Product("сливки", 55, 0.2);
+        Product milk = new Product("молоко", 65);
+        Product tea = new Product("чай", 450);
+        Product coffee = new Product("кофе", 650);
+        Product banana = new Product("банан", 39);
+        Product apple = new Product("яблоко", 35);
+        Product orange = new Product("апельсин", 85);
+        Product orange2 = new Product("апельсин", 85);
+        Product cream = new Product("сливки", 55);
 
-        Product.addProduct(milk);
-        Product.addProduct(tea);
-        Product.addProduct(coffee);
-        Product.addProduct(banana);
-        Product.addProduct(apple);
-        Product.addProduct(orange);
-        Product.addProduct(cream);
-        //Product.addProduct(orange2); если раскоментировать выбрасывается исключение
-       // Product.addProduct(tea);  если раскоментировать выбрасывается исключение
-
+        ListOfProduct.addProduct(milk);
+        ListOfProduct.addProduct(tea);
+        ListOfProduct.addProduct(coffee);
+        ListOfProduct.addProduct(banana);
+        ListOfProduct.addProduct(apple);
+        ListOfProduct.addProduct(orange);
+        ListOfProduct.addProduct(cream);
+        //Product.addProduct(orange2, 0.15); если раскоментировать выбрасывается исключение
+        //Product.addProduct(tea, 0.5);  если раскоментировать выбрасывается исключение
         int countP = 1;
-        for (Product product : Product.setProduct) {
+        for (Product product : ListOfProduct.setProduct) {
             System.out.println(countP + " " + product.toString());
             countP++;
         }
         System.out.println();
-        Recipe salad = new Recipe("фруктовый салат", Set.of(banana, orange, apple));
-        Recipe coffeeMilk = new Recipe("кофе с молоком", Set.of(coffee, milk));
-        Recipe coffeeMilk2 = new Recipe("кофе и молоко", Set.of(coffee, milk)); // для проверки условия добавления
-        Recipe teaMilk = new Recipe("чай с молоком", Set.of(tea, milk));
-        Recipe teaMilk2 = new Recipe("чай с молоком", Set.of(tea, milk, cream)); //для проверки задвоения
 
-        Recipe.addRecipe(salad);
-        Recipe.addRecipe(coffeeMilk);
-        Recipe.addRecipe(coffeeMilk2);
-        Recipe.addRecipe(teaMilk);
-        //Recipe.addRecipe(teaMilk2); если раскоментировать выбрасывается исключение
+        Recipe salad = new Recipe("фруктовый салат", Map.of(banana, 0.14, apple, 0.14, orange, 0.15));
+        Recipe coffeeMilk = new Recipe("кофе с молоком", Map.of(coffee, 0.06, milk, 0.2));
+        Recipe coffeeMilk2 = new Recipe("кофе и молоко", Map.of(coffee, 0.06, milk, 0.2)); // для проверки условия добавления
+        Recipe teaMilk = new Recipe("чай с молоком", Map.of(tea, 0.2, milk, 0.2));
+        Recipe teaMilk2 = new Recipe("чай с молоком", Map.of(tea, 0.2, milk, 0.2, cream, 0.02)); //для проверки задвоения
+
+        BookRecipe.addRecipe(salad);
+        BookRecipe.addRecipe(coffeeMilk);
+        BookRecipe.addRecipe(coffeeMilk2);
+        BookRecipe.addRecipe(teaMilk);
+        //BookRecipe.addRecipe(teaMilk2); если раскоментировать выбрасывается исключение
         int countR = 1;
-        for (Recipe recipe : Recipe.setRecipe) {
+        for (Recipe recipe : BookRecipe.setRecipe) {
             System.out.println(countR + " " + recipe.toString());
             countR++;
         }
         System.out.println();
 
-        java.util.Random random = new java.util.Random();
+      /*  java.util.Random random = new java.util.Random();
         List<Integer> nums = new ArrayList<>(20);
         for (int x = 0; x < 20; x++) {
             nums.add(random.nextInt(1_000));
@@ -93,14 +92,13 @@ public class Main {
         System.out.println();
         System.out.println("поиск по номеру паспорта:");
         System.out.println(updatePassport.get("874321"));
-        System.out.println(updatePassport.get("874322"));
+        System.out.println(updatePassport.get("874322"));*/
 
         /*if (updatePassport.containsKey("874322")){
             System.out.println(updatePassport.get("874322"));
         }else {
             System.out.println("паспорта с таким номером в списке нет");
         }*/
-
     }
 
     public static int[] generateRandomArray() {

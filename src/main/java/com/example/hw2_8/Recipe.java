@@ -2,35 +2,22 @@ package com.example.hw2_8;
 import java.util.*;
 public class Recipe {
     private String recipeName;
-    Set<Product> setProductInRecipe = new HashSet<>();
+    Map<Product, Double> mapProductInRecipe = new HashMap<>();
     private double costAllProduct = 0.0;
-
-    //Map<Product, Double> mapProductInRecipe = new HashMap<>();
-
-
-    public Recipe(String recipeName, Set<Product> setProductInRecipe) {
+    public Recipe(String recipeName, Map<Product, Double> mapProductInRecipe) {
         if (recipeName== null || recipeName.isBlank()) {
             System.out.println("название у рецепта должно быть!!!");
         }else {
             this.recipeName = recipeName;
         }
-        this.setProductInRecipe = setProductInRecipe;
+        this.mapProductInRecipe = mapProductInRecipe;
     }
-
-    public static double allCost(double costAllProduct, Set<Product> setProductInRecipe){
-    for(Product product: setProductInRecipe) {
-        costAllProduct += product.getProductCost();
-        }
-    return costAllProduct;
-    }
-
     public String getRecipeName() {return recipeName;}
-    public Set<Product> getSetProductInRecipe() {return setProductInRecipe;}
+    public Map<Product, Double> getMapProductInRecipe() {return mapProductInRecipe;}
     public double getCostAllProduct() {return costAllProduct;}
-
     @Override
     public String toString() {
-        return recipeName + " список продуктов: " + setProductInRecipe + " на общую сумму " + allCost(costAllProduct, setProductInRecipe) + " руб";
+        return recipeName + " список продуктов: " + mapProductInRecipe.keySet() + " на общую сумму " + allCost(costAllProduct, mapProductInRecipe) + " руб";
     }
     @Override
     public int hashCode() {return Objects.hash(recipeName);}
@@ -41,13 +28,11 @@ public class Recipe {
         Recipe recipe = (Recipe) o;
         return recipeName.equals(recipe.recipeName);
     }
-
-    public static Set<Recipe> setRecipe = new HashSet<>();
-    public static void addRecipe(Recipe recipe){
-        if(setRecipe.contains(recipe)){
-            throw new IllegalArgumentException("дважды добавить одно и то же нельзя!!");
-        }else {
-            setRecipe.add(recipe);
+    public static double allCost(double costAllProduct, Map<Product, Double> mapProductInRecipe){
+        for (Map.Entry<Product, Double> cost:mapProductInRecipe.entrySet()){
+            costAllProduct += cost.getKey().getProductCost() * cost.getValue();
         }
+        return costAllProduct;
     }
+
 }
