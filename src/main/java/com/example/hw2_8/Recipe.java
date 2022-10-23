@@ -1,14 +1,11 @@
 package com.example.hw2_8;
-
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
+import java.util.*;
 public class Recipe {
     private String recipeName;
     Set<Product> setProductInRecipe = new HashSet<>();
     private double costAllProduct = 0.0;
-    Product product;
+
+    //Map<Product, Double> mapProductInRecipe = new HashMap<>();
 
 
     public Recipe(String recipeName, Set<Product> setProductInRecipe) {
@@ -35,10 +32,8 @@ public class Recipe {
     public String toString() {
         return recipeName + " список продуктов: " + setProductInRecipe + " на общую сумму " + allCost(costAllProduct, setProductInRecipe) + " руб";
     }
-
     @Override
     public int hashCode() {return Objects.hash(recipeName);}
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
