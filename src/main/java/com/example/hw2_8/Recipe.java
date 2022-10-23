@@ -41,4 +41,13 @@ public class Recipe {
         Recipe recipe = (Recipe) o;
         return recipeName.equals(recipe.recipeName);
     }
+
+    public static Set<Recipe> setRecipe = new HashSet<>();
+    public static void addRecipe(Recipe recipe){
+        if(setRecipe.contains(recipe)){
+            throw new IllegalArgumentException("дважды добавить одно и то же нельзя!!");
+        }else {
+            setRecipe.add(recipe);
+        }
+    }
 }

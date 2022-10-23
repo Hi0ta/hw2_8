@@ -3,23 +3,7 @@ import java.time.LocalDate;
 import java.util.*;
 public class Main {
     public static Map<String, Passport> updatePassport = new HashMap<>();
-    public static Set<Product> setProduct = new HashSet<>();
-    public static Set<Recipe> setRecipe = new HashSet<>();
 
-    public static void addProduct(Product product){
-        if(setProduct.contains(product)){
-            throw new IllegalArgumentException("дважды добавить одно и то же нельзя!!");
-        }else {
-            setProduct.add(product);
-        }
-    }
-    public static void addRecipe(Recipe recipe){
-        if(setRecipe.contains(recipe)){
-            throw new IllegalArgumentException("дважды добавить одно и то же нельзя!!");
-        }else {
-            setRecipe.add(recipe);
-        }
-    }
     public static void main(String[] args) {
         Product milk = new Product("молоко", 65, 1);
         Product tea = new Product("чай", 450, 0.5);
@@ -30,18 +14,18 @@ public class Main {
         Product orange2 = new Product("апельсин", 85, 1);
         Product cream = new Product("сливки", 55, 0.2);
 
-        Main.addProduct(milk);
-        Main.addProduct(tea);
-        Main.addProduct(coffee);
-        Main.addProduct(banana);
-        Main.addProduct(apple);
-        Main.addProduct(orange);
-        Main.addProduct(cream);
-        //Main.addProducts(orange2); если раскоментировать выбрасывается исключение
-        //Main.addProducts(tea);   если раскоментировать выбрасывается исключение
+        Product.addProduct(milk);
+        Product.addProduct(tea);
+        Product.addProduct(coffee);
+        Product.addProduct(banana);
+        Product.addProduct(apple);
+        Product.addProduct(orange);
+        Product.addProduct(cream);
+        //Product.addProduct(orange2); если раскоментировать выбрасывается исключение
+       // Product.addProduct(tea);  если раскоментировать выбрасывается исключение
 
         int countP = 1;
-        for (Product product : setProduct) {
+        for (Product product : Product.setProduct) {
             System.out.println(countP + " " + product.toString());
             countP++;
         }
@@ -52,13 +36,13 @@ public class Main {
         Recipe teaMilk = new Recipe("чай с молоком", Set.of(tea, milk));
         Recipe teaMilk2 = new Recipe("чай с молоком", Set.of(tea, milk, cream)); //для проверки задвоения
 
-        Main.addRecipe(salad);
-        Main.addRecipe(coffeeMilk);
-        Main.addRecipe(coffeeMilk2);
-        Main.addRecipe(teaMilk);
-        //Main.addRecipe(teaMilk2); если раскоментировать выбрасывается исключение
+        Recipe.addRecipe(salad);
+        Recipe.addRecipe(coffeeMilk);
+        Recipe.addRecipe(coffeeMilk2);
+        Recipe.addRecipe(teaMilk);
+        //Recipe.addRecipe(teaMilk2); если раскоментировать выбрасывается исключение
         int countR = 1;
-        for (Recipe recipe : setRecipe) {
+        for (Recipe recipe : Recipe.setRecipe) {
             System.out.println(countR + " " + recipe.toString());
             countR++;
         }
