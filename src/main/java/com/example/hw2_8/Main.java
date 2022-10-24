@@ -30,11 +30,30 @@ public class Main {
         }
         System.out.println();
 
-        Recipe salad = new Recipe("фруктовый салат", Set.of(banana, apple, orange));
-        Recipe coffeeMilk = new Recipe("кофе с молоком", Set.of(coffee, milk));
-        Recipe coffeeMilk2 = new Recipe("кофе и молоко", Set.of(coffee, milk)); // для проверки условия добавления
-        Recipe teaMilk = new Recipe("чай с молоком", Set.of(tea, milk));
-        Recipe teaMilk2 = new Recipe("чай с молоком", Set.of(tea, milk, cream)); //для проверки задвоения
+        Recipe salad = new Recipe("фруктовый салат");
+        Recipe coffeeMilk = new Recipe("кофе с молоком");
+        Recipe coffeeMilk2 = new Recipe("кофе и молоко"); // для проверки условия добавления
+        Recipe teaMilk = new Recipe("чай с молоком");
+        Recipe teaMilk2 = new Recipe("чай с молоком"); //для проверки задвоения
+        salad.addProductInRecipe(banana, 0.4);
+        salad.addProductInRecipe(apple, 0.14);
+        salad.addProductInRecipe(orange, 0.15);
+        System.out.println(salad);
+        coffeeMilk.addProductInRecipe(coffee, 0.06);
+        coffeeMilk.addProductInRecipe(milk, 0.2);
+        //coffeeMilk.addProductInRecipe(milk, 0.2); //для проверки на задвоение
+        System.out.println(coffeeMilk);
+        coffeeMilk2.addProductInRecipe(coffee, 0.06);
+        coffeeMilk2.addProductInRecipe(milk, 0.2);
+        System.out.println(coffeeMilk2);
+        teaMilk.addProductInRecipe(tea, 0.2);
+        teaMilk.addProductInRecipe(milk, 0.2);
+        System.out.println(teaMilk);
+        teaMilk2.addProductInRecipe(tea, 0.2);
+        teaMilk2.addProductInRecipe(milk, 0.2);
+        teaMilk2.addProductInRecipe(cream, 0.02);
+        System.out.println(teaMilk2);
+        System.out.println();
 
         BookRecipe.addRecipe(salad);
         BookRecipe.addRecipe(coffeeMilk);
@@ -48,7 +67,7 @@ public class Main {
         }
         System.out.println();
 
-        java.util.Random random = new java.util.Random();
+        /*java.util.Random random = new java.util.Random();
         List<Integer> nums = new ArrayList<>(20);
         for (int x = 0; x < 20; x++) {
             nums.add(random.nextInt(1_000));

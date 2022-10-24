@@ -2,24 +2,38 @@ package com.example.hw2_8;
 import java.util.*;
 public class Recipe {
     private String recipeName;
-    private Set<Product> setProductInRecipe = new HashSet<>();
-    private double costAllProduct = 0.0;
-    public Recipe(String recipeName, Set<Product> setProductInRecipe) {
+    //private Set<Product> setProductInRecipe = new HashSet<>();
+    private Map<Product, Double> mapProductInRecipe;
+    private double costAllProduct;
+    public Recipe(String recipeName) {
         if (recipeName== null || recipeName.isBlank()) {
             System.out.println("название у рецепта должно быть!!!");
         }else {
             this.recipeName = recipeName;
         }
-        this.setProductInRecipe = setProductInRecipe;
+        costAllProduct = 0.0;
+        mapProductInRecipe = new HashMap<>();
     }
 
     public String getRecipeName() {return recipeName;}
-    public Set<Product> getSetProductInRecipe() {return setProductInRecipe;}
+    public Map<Product, Double> getMapProductInRecipe() {return mapProductInRecipe;}
     public double getCostAllProduct() {return costAllProduct;}
 
+    public void addProductInRecipe(Product product, double quantity){
+        if (mapProductInRecipe.containsKey(product)){
+            throw new IllegalArgumentException("Такой продукт уже добавлен в рецепт");
+        }else if(quantity <= 0.0){
+            quantity = 1.0;
+            mapProductInRecipe.put(product, quantity);
+            costAllProduct += product.getProductCost() * quantity;
+        }else {
+            mapProductInRecipe.put(product, quantity);
+            costAllProduct += product.getProductCost() * quantity;
+        }
+    }
     @Override
     public String toString() {
-        return recipeName + " список продуктов: " + setProductInRecipe + " на общую сумму " + allCost(costAllProduct, setProductInRecipe) + " руб";
+        return recipeName + " список продуктов: " + mapProductInRecipe + " на общую сумму " + costAllProduct + " руб";
     }
     @Override
     public int hashCode() {return Objects.hash(recipeName);}
@@ -29,12 +43,6 @@ public class Recipe {
         if (o == null || getClass() != o.getClass()) return false;
         Recipe recipe = (Recipe) o;
         return recipeName.equals(recipe.recipeName);
-    }
-    public static double allCost(double costAllProduct, Set<Product> setProductInRecipe){
-        for(Product product: setProductInRecipe) {
-            costAllProduct += product.getProductCost()*product.getQuantity();
-        }
-        return costAllProduct;
     }
 
 
