@@ -59,15 +59,5 @@ public class Passport {
     public String toString() {
         return "паспорт № " + numberPassport + " ФИО: " + lastName + " " + firstName + " " + middleName + ", дата рождения: " + dateOfBirth;
     }
-   /* public void addPassport(Passport passport){
-        updatePassport.put(getNumberPassport(), passport);
-    }
 
-    public void searchPassportByNumber(String numberPassport){
-        System.out.println(updatePassport.containsKey(numberPassport));
-    }
-
-    public void printUpdatePassport(){
-        System.out.println(updatePassport);
-    }*/
 }

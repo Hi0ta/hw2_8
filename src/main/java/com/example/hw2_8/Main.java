@@ -2,7 +2,7 @@ package com.example.hw2_8;
 import java.time.LocalDate;
 import java.util.*;
 public class Main {
-    public static Map<String, Passport> updatePassport = new HashMap<>();
+
     public static void main(String[] args) {
         Product milk = new Product("молоко", 65, 0.2);
         Product tea = new Product("чай", 450, 0.2);
@@ -55,19 +55,19 @@ public class Main {
         System.out.println(teaMilk2);
         System.out.println();
 
-        BookRecipe.addRecipe(salad);
-        BookRecipe.addRecipe(coffeeMilk);
-        BookRecipe.addRecipe(coffeeMilk2);
-        BookRecipe.addRecipe(teaMilk);
+        BookOfRecipe.addRecipe(salad);
+        BookOfRecipe.addRecipe(coffeeMilk);
+        BookOfRecipe.addRecipe(coffeeMilk2);
+        BookOfRecipe.addRecipe(teaMilk);
         //BookRecipe.addRecipe(teaMilk2); //если раскоментировать выбрасывается исключение
         int countR = 1;
-        for (Recipe recipe : BookRecipe.setRecipe) {
+        for (Recipe recipe : BookOfRecipe.setRecipe) {
             System.out.println(countR + " " + recipe.toString());
             countR++;
         }
         System.out.println();
 
-        /*java.util.Random random = new java.util.Random();
+        java.util.Random random = new java.util.Random();
         List<Integer> nums = new ArrayList<>(20);
         for (int x = 0; x < 20; x++) {
             nums.add(random.nextInt(1_000));
@@ -99,26 +99,21 @@ public class Main {
         Passport passport3 = new Passport("985452", "Сергеев", "Данил", "Андреевич", LocalDate.of(1981, 12,8));
         Passport passport4 = new Passport("874321", "Игорев", "Денис", "Абрамович", LocalDate.of(1998, 1,13));
         Passport passport5 = new Passport("217653", "Лаптева", "Инна", "Романовна", LocalDate.of(1952, 8,22));
-        updatePassport.put(passport1.getNumberPassport(), passport1);
-        updatePassport.put(passport2.getNumberPassport(), passport2); //должны обновиться все данные у этого номера паспорта
-        updatePassport.put(passport3.getNumberPassport(), passport3);
-        updatePassport.put(passport4.getNumberPassport(), passport4);
-        updatePassport.put(passport5.getNumberPassport(), passport5);
+        ListOfPassport.addPassport(passport1);
+        ListOfPassport.addPassport(passport2); //должны обновиться все данные у этого номера паспорта
+        ListOfPassport.addPassport(passport3);
+        ListOfPassport.addPassport(passport4);
+        ListOfPassport.addPassport(passport5);
 
         System.out.println("список поспортов:");
-        for (Map.Entry<String, Passport> updatePassport: updatePassport.entrySet()){
+        for (Map.Entry<String, Passport> updatePassport: ListOfPassport.updatePassport.entrySet()){
         System.out.println(updatePassport.getValue());
         }
         System.out.println();
-        System.out.println("поиск по номеру паспорта:");
-        System.out.println(updatePassport.get("874321"));
-        System.out.println(updatePassport.get("874322"));
+        System.out.println("поиск по номеру паспорта");
+        ListOfPassport.searchPassportByNumber("874321");
+        ListOfPassport.searchPassportByNumber("874322");
 
-        /*if (updatePassport.containsKey("874322")){
-            System.out.println(updatePassport.get("874322"));
-        }else {
-            System.out.println("паспорта с таким номером в списке нет");
-        }*/
     }
 
     public static int[] generateRandomArray() {
