@@ -4,26 +4,39 @@ import java.util.*;
 
 public class Product {
     private String productName;
-    private double productCost;
+    private Double productCost;
+    private Double quantity;
 
-    public Product(String productName, double productCost) {
+    public Product(String productName, double productCost, Double quantity) {
         if (productName== null || productName.isBlank()){
-            throw new IllegalArgumentException("Заполните карточку товара полностью и корректно");
+            throw new IllegalArgumentException("Заполните карточку товара полностью и корректно (название у продукта должно быть)");
         }else {
             this.productName = productName;
         }
         this.setProductCost(productCost);
+        this.setQuantity(quantity);
     }
     public String getProductName() {return productName;}
     public double getProductCost() {return productCost;}
+    public Double getQuantity() {return quantity;}
 
-    public void setProductCost(double productCost) {
+    public void setProductCost(Double productCost) {
         if (productCost <= 0){
-            throw new IllegalArgumentException("Заполните карточку товара полностью и корректно");
+            throw new IllegalArgumentException("Заполните карточку товара полностью и корректно(стоимость должна  быть выше нуля)");
         }else {
             this.productCost = productCost;
         }
     }
+
+    public void setQuantity(Double quantity) {
+        if (quantity == null){
+            quantity = 1.0;
+        }else if(quantity < 0.0){
+            throw new IllegalArgumentException("Заполните карточку товара корректно (количество не может быть числом отрицательным)");
+        }
+        this.quantity = quantity;
+    }
+
     @Override
     public int hashCode() {return Objects.hash(productName, productCost);}
     @Override
@@ -35,7 +48,7 @@ public class Product {
     }
     @Override
     public String toString() {
-        return productName + " цена " + productCost + "руб";
+        return productName + " цена " + productCost + " руб количество " + quantity + " кг";
     }
 
 }

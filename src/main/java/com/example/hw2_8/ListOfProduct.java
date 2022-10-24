@@ -5,12 +5,11 @@ import java.util.Set;
 public class ListOfProduct {
     public static Set<Product> setProduct = new HashSet<>();
     public static void addProduct(Product product){
-        if(setProduct.equals(product)){
-            throw new IllegalArgumentException("дважды добавить одно и то же нельзя!!");
+        if(setProduct.contains(product)){
+            throw new IllegalArgumentException("такой товар уже куплен ;-)");
         }else {
             setProduct.add(product);
         }
     }
-
 
 }

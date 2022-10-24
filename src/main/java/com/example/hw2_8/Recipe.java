@@ -2,22 +2,24 @@ package com.example.hw2_8;
 import java.util.*;
 public class Recipe {
     private String recipeName;
-    Map<Product, Double> mapProductInRecipe = new HashMap<>();
+    private Set<Product> setProductInRecipe = new HashSet<>();
     private double costAllProduct = 0.0;
-    public Recipe(String recipeName, Map<Product, Double> mapProductInRecipe) {
+    public Recipe(String recipeName, Set<Product> setProductInRecipe) {
         if (recipeName== null || recipeName.isBlank()) {
             System.out.println("название у рецепта должно быть!!!");
         }else {
             this.recipeName = recipeName;
         }
-        this.mapProductInRecipe = mapProductInRecipe;
+        this.setProductInRecipe = setProductInRecipe;
     }
+
     public String getRecipeName() {return recipeName;}
-    public Map<Product, Double> getMapProductInRecipe() {return mapProductInRecipe;}
+    public Set<Product> getSetProductInRecipe() {return setProductInRecipe;}
     public double getCostAllProduct() {return costAllProduct;}
+
     @Override
     public String toString() {
-        return recipeName + " список продуктов: " + mapProductInRecipe.keySet() + " на общую сумму " + allCost(costAllProduct, mapProductInRecipe) + " руб";
+        return recipeName + " список продуктов: " + setProductInRecipe + " на общую сумму " + allCost(costAllProduct, setProductInRecipe) + " руб";
     }
     @Override
     public int hashCode() {return Objects.hash(recipeName);}
@@ -28,11 +30,12 @@ public class Recipe {
         Recipe recipe = (Recipe) o;
         return recipeName.equals(recipe.recipeName);
     }
-    public static double allCost(double costAllProduct, Map<Product, Double> mapProductInRecipe){
-        for (Map.Entry<Product, Double> cost:mapProductInRecipe.entrySet()){
-            costAllProduct += cost.getKey().getProductCost() * cost.getValue();
+    public static double allCost(double costAllProduct, Set<Product> setProductInRecipe){
+        for(Product product: setProductInRecipe) {
+            costAllProduct += product.getProductCost()*product.getQuantity();
         }
         return costAllProduct;
     }
+
 
 }
