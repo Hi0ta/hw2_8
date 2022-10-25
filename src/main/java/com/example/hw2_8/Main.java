@@ -115,9 +115,7 @@ public class Main {
         System.out.println("поиск по номеру паспорта");
         updatePassport.searchPassportByNumber("874321");
         updatePassport.searchPassportByNumber("874322");
-
     }
-
     public static int[] generateRandomArray() {
         java.util.Random random = new java.util.Random();
         int[] arr = new int[30];

@@ -59,5 +59,4 @@ public class Passport {
     public String toString() {
         return "паспорт № " + numberPassport + " ФИО: " + lastName + " " + firstName + " " + middleName + ", дата рождения: " + dateOfBirth;
     }
-
 }

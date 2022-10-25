@@ -10,11 +10,9 @@ public class ListOfPassport {
     public ListOfPassport() {
         updatePassport = new HashMap<>();
     }
-
     public Map<String, Passport> getUpdatePassport() {
         return updatePassport;
     }
-
     public  void addPassport(Passport passport){
         updatePassport.put(passport.getNumberPassport(), passport);
     }
