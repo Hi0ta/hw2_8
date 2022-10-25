@@ -99,20 +99,22 @@ public class Main {
         Passport passport3 = new Passport("985452", "Сергеев", "Данил", "Андреевич", LocalDate.of(1981, 12,8));
         Passport passport4 = new Passport("874321", "Игорев", "Денис", "Абрамович", LocalDate.of(1998, 1,13));
         Passport passport5 = new Passport("217653", "Лаптева", "Инна", "Романовна", LocalDate.of(1952, 8,22));
-        ListOfPassport.addPassport(passport1);
-        ListOfPassport.addPassport(passport2); //должны обновиться все данные у этого номера паспорта
-        ListOfPassport.addPassport(passport3);
-        ListOfPassport.addPassport(passport4);
-        ListOfPassport.addPassport(passport5);
+
+        ListOfPassport updatePassport = new ListOfPassport();
+        updatePassport.addPassport(passport1);
+        updatePassport.addPassport(passport2); //должны обновиться все данные у этого номера паспорта
+        updatePassport.addPassport(passport3);
+        updatePassport.addPassport(passport4);
+        updatePassport.addPassport(passport5);
 
         System.out.println("список поспортов:");
-        for (Map.Entry<String, Passport> updatePassport: ListOfPassport.updatePassport.entrySet()){
-        System.out.println(updatePassport.getValue());
+        for (Map.Entry<String, Passport> list: updatePassport.getUpdatePassport().entrySet()){
+        System.out.println(list.getValue());
         }
         System.out.println();
         System.out.println("поиск по номеру паспорта");
-        ListOfPassport.searchPassportByNumber("874321");
-        ListOfPassport.searchPassportByNumber("874322");
+        updatePassport.searchPassportByNumber("874321");
+        updatePassport.searchPassportByNumber("874322");
 
     }
 

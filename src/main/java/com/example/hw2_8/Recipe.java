@@ -35,6 +35,7 @@ public class Recipe {
     public String toString() {
         return recipeName + " список продуктов: " + mapProductInRecipe + " на общую сумму " + costAllProduct + " руб";
     }
+
     @Override
     public int hashCode() {return Objects.hash(recipeName);}
     @Override
