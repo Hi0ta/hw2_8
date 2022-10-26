@@ -12,19 +12,20 @@ public class Main {
         Product orange = new Product("апельсин", 85, 0.15);
         Product orange2 = new Product("апельсин", 85, 0.15);
         Product cream = new Product("сливки", 55, 0.02);
+        ListOfProduct listOfProduct = new ListOfProduct();
 
-        ListOfProduct.addProduct(milk);
-        ListOfProduct.addProduct(tea);
-        ListOfProduct.addProduct(coffee);
-        ListOfProduct.addProduct(banana);
-        ListOfProduct.addProduct(apple);
-        ListOfProduct.addProduct(orange);
-        ListOfProduct.addProduct(cream);
+        listOfProduct.addProduct(milk);
+        listOfProduct.addProduct(tea);
+        listOfProduct.addProduct(coffee);
+        listOfProduct.addProduct(banana);
+        listOfProduct.addProduct(apple);
+        listOfProduct.addProduct(orange);
+        listOfProduct.addProduct(cream);
         //ListOfProduct.setProduct.remove(tea); //проверка удаления продукта из списка
         //ListOfProduct.addProduct(orange2); //если раскоментировать выбрасывается исключение
         //ListOfProduct.addProduct(tea); // если раскоментировать выбрасывается исключение
         int countP = 1;
-        for (Product product : ListOfProduct.setProduct) {
+        for (Product product : listOfProduct.setProduct) {
             System.out.println(countP + " " + product.toString());
             countP++;
         }
@@ -54,14 +55,14 @@ public class Main {
         teaMilk2.addProductInRecipe(cream, 0.02);
         System.out.println(teaMilk2);
         System.out.println();
-
-        BookOfRecipe.addRecipe(salad);
-        BookOfRecipe.addRecipe(coffeeMilk);
-        BookOfRecipe.addRecipe(coffeeMilk2);
-        BookOfRecipe.addRecipe(teaMilk);
+        BookOfRecipe bookOfRecipe = new BookOfRecipe();
+        bookOfRecipe.addRecipe(salad);
+        bookOfRecipe.addRecipe(coffeeMilk);
+        bookOfRecipe.addRecipe(coffeeMilk2);
+        bookOfRecipe.addRecipe(teaMilk);
         //BookRecipe.addRecipe(teaMilk2); //если раскоментировать выбрасывается исключение
         int countR = 1;
-        for (Recipe recipe : BookOfRecipe.setRecipe) {
+        for (Recipe recipe : bookOfRecipe.setRecipe) {
             System.out.println(countR + " " + recipe.toString());
             countR++;
         }
